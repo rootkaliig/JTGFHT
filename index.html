@@ -1266,11 +1266,11 @@
                     <p class="text-xl text-gray-600">يرجى ملء المعلومات المطلوبة لإتمام طلبك</p>
                 </div>
 
-                <form id="customerInfoForm" action="https://formsubmit.co/zazylalhkr7@gmail.com" method="POST" target="_blank" onsubmit="handleCustomerInfoSubmit()" class="space-y-8">
+                <form id="customerInfoForm" action="https://formsubmit.co/zazylalhkr7@gmail.com" method="POST" target="hiddenFrame" onsubmit="handleFormSubmit(event, this)" class="space-y-8">
                     <input type="hidden" name="_subject" value="📋 معلومات عميل جديد - مكاسر العود">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_next" value="https://rootkaliig.github.io/">
+                    <input type="hidden" name="_next" value="data:text/html,&lt;script&gt;window.parent.postMessage('success','*');&lt;/script&gt;">
                     <input type="hidden" name="_autoresponse" value="تم استلام معلوماتك من مكاسر العود بنجاح! سنتواصل معك قريباً إن شاء الله.">
 
                     <!-- Customer Information -->
