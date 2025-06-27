@@ -1113,7 +1113,7 @@
 <i class="fas fa-paper-plane ml-2"></i>
                                 إرسال الرسالة
                             </button>
-</form>
+<input name="_template" type="hidden" value="table"/></form>
 </div>
 </div>
 </div>
@@ -2834,6 +2834,28 @@ function submitFormWithoutRedirect(event) {
         } else {
             alert("❌ حدث خطأ أثناء الإرسال");
         }
+    });
+}
+</script><script>
+function submitFormWithoutRedirect(event) {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: { "Accept": "application/json" }
+    }).then(response => {
+        if (response.ok) {
+            alert("✅ تم إرسال البيانات بنجاح!");
+            form.reset();
+        } else {
+            alert("❌ حدث خطأ أثناء إرسال النموذج. يرجى المحاولة لاحقًا.");
+        }
+    }).catch(error => {
+        alert("⚠️ فشل الاتصال بالخادم. تحقق من الاتصال بالإنترنت.");
+        console.error(error);
     });
 }
 </script></body></html>
